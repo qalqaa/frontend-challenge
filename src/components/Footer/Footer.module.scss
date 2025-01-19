@@ -1,5 +1,53 @@
 .footer {
   position: absolute;
-  width: 100%;
+  background-color: var(--color-accent-transparent-semi);
+  border-radius: 1rem;
+  margin: 1rem;
+  width: calc(100% - 2rem);
   bottom: 0;
+  .container {
+    padding: 2rem 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+
+    .me {
+      margin: 0;
+    }
+
+    .avatar {
+      border-radius: 50%;
+    }
+
+    .contacts {
+      margin: 0;
+      font-size: 2rem;
+    }
+
+    .list {
+      display: flex;
+      gap: 1rem;
+
+      .item {
+        list-style: none;
+
+        .link {
+          font-size: 1.8rem;
+          text-decoration: none;
+          transition:
+            color 0.3s ease,
+            background-color 0.3s ease;
+          background-color: var(--color-accent);
+          color: var(--color-text);
+          padding: 0.5rem 1rem;
+          border-radius: 1rem;
+
+          &:hover {
+            background-color: var(--color-accent-highlight);
+          }
+        }
+      }
+    }
+  }
 }

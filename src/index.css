@@ -1,16 +1,62 @@
 :root {
+  /* vars */
+  --color-accent: #6ea1ff;
+  --color-accent-highlight: #97bafc;
+  --color-accent-darkened: #4b78cc;
+  --color-accent-transparent: rgba(110, 161, 255, 0.5);
+  --color-accent-transparent-semi: rgba(110, 161, 255, 0.8);
+
+  --color-bg: #f0f0f0;
+  --color-bg-comp: #ffffff;
+
+  --color-text: #333333;
+  --color-text-soft: #666666;
+  --color-text-header: #ffffff;
+
+  --color-border: #eaeaea;
+
+  --container-size-desktop: 1560px;
+  --container-size-laptop: 1200px;
+  --container-size-tablet: 768px;
+  --container-size-mobile: 100%;
+
+  /* global styles */
   font-family: Montserrat, Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
+  font-size: 62.5%;
+  transition: all 0.3s ease-in-out;
+
+  color: var(--color-text);
+  background-color: var(--color-bg);
 
   color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+h1 {
+  font-size: 2.6rem;
+}
+
+h2 {
+  font-size: 2.2rem;
+}
+
+p {
+  font-size: 1.6rem;
+}
+
+a {
+  text-decoration: none;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
 }
 
 body {
@@ -19,9 +65,21 @@ body {
   overflow-y: hidden;
 }
 
-@media (prefers-color-scheme: light) {
+@media (prefers-color-scheme: dark) {
   :root {
-    color: #213547;
-    background-color: #ffffff;
+    /* vars */
+    --color-accent: rgb(65, 132, 255);
+    --color-accent-highlight: rgb(113, 163, 255);
+    --color-accent-darkened: #4b78cc;
+    --color-accent-transparent: rgba(65, 132, 255, 0.5);
+    --color-accent-transparent-semi: rgba(65, 132, 255, 0.8);
+
+    --color-bg: #181818;
+    --color-bg-comp: #303030;
+
+    --color-text: #ffffff;
+    --color-text-soft: #b1b1b1;
+
+    --color-border: #5f5f5f;
   }
 }

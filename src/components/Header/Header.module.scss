@@ -1,5 +1,57 @@
+//Если что я люблю и уважаю tailwind, но тут решил пофлексить CSS модулями, так что пускай без него
+
 .header {
+  box-sizing: border-box;
+  margin: 1rem;
   position: fixed;
-  width: 100%;
+  width: calc(100% - 2rem);
   top: 0;
+  border-radius: 1rem;
+  padding: 1em 2rem;
+  background-color: var(--color-accent-transparent-semi);
+  backdrop-filter: blur(10px);
+
+  .container {
+    max-width: var(--container-size-desktop);
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+
+    .logo {
+      color: var(--color-text-header);
+      font-weight: 500;
+      font-size: 3rem;
+      padding: 1.4rem 2rem;
+      border-radius: 1rem;
+      transition:
+        color 0.3s ease,
+        background-color 0.3s ease;
+
+      &:hover {
+        background-color: var(--color-accent-highlight);
+      }
+    }
+
+    .list {
+      display: flex;
+      align-items: center;
+      gap: clamp(1rem, 2vw, 2rem);
+
+      .item {
+        .link {
+          color: var(--color-text-header);
+          border-radius: 1rem;
+          font-size: 1.8rem;
+          padding: calc(4.4rem - 1.8rem) 2rem;
+          transition:
+            color 0.3s ease,
+            background-color 0.3s ease;
+
+          &:hover {
+            background-color: var(--color-accent-highlight);
+          }
+        }
+      }
+    }
+  }
 }
