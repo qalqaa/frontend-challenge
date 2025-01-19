@@ -9,6 +9,7 @@
   border-radius: 1rem;
   padding: 1em 2rem;
   background-color: var(--color-accent-transparent-semi);
+  z-index: 1000;
   backdrop-filter: blur(10px);
 
   .container {

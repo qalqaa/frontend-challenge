@@ -62,7 +62,8 @@ ul {
 body {
   margin: 0;
   min-height: 100vh;
-  overflow-y: hidden;
+  /* overflow-y: hidden; */
+  position: relative;
 }
 
 @media (prefers-color-scheme: dark) {
