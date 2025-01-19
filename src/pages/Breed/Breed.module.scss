@@ -1,0 +1,23 @@
+.container {
+  max-width: calc(var(--container-size-desktop) / 2);
+  margin: 10.3rem auto 0;
+  padding: 1rem 1rem 9.2rem;
+  display: flex;
+  flex-direction: column;
+  // justify-content: center;
+  align-items: center;
+  min-height: 92.3vh;
+
+  h2 {
+    text-align: center;
+    font-size: 5.2rem;
+    margin: 0 0 1rem 0;
+  }
+
+  .list {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    justify-content: center;
+  }
+}

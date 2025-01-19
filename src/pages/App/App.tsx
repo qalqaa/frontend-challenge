@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import Card from '../../components/Card/Card';
 import Loader from '../../components/Loader/Loader';
 import { useCatStore } from '../../stores/catStore';
@@ -6,9 +6,9 @@ import styles from './App.module.scss';
 
 function App() {
   const { breeds, fetchBreeds, isLoading } = useCatStore();
-  useEffect(() => {
-    if (breeds.length === 0 && !isLoading) fetchBreeds();
-  }, [breeds.length, isLoading, fetchBreeds]);
+  if (breeds.length === 0 && !isLoading) fetchBreeds();
+
+  const navigate = useNavigate();
   return (
     <main className={styles.container}>
       <h2>Все породы котиков</h2>
@@ -17,7 +17,15 @@ function App() {
       ) : (
         <ul className={styles.list}>
           {breeds.map((breed) => (
-            <Card key={breed.id} breed={breed} />
+            <Card
+              key={breed.id}
+              breed={breed}
+              onCLick={() => {
+                navigate(`/breed/${breed.id}`, {
+                  state: { breed },
+                });
+              }}
+            />
           ))}
         </ul>
       )}

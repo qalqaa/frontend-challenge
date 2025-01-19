@@ -11,7 +11,8 @@ export interface CatStore {
   currentPage: number;
   picturesPerPage: number;
   fetchBreeds: () => Promise<void>;
-  getCatsByBreed: (breed: string) => void;
+  fetchCatsByBreed: (breed: string) => void;
+  resetCats: () => void;
   addToFavorites: (cat: Cat) => void;
   removeFromFavorites: (catId: string) => void;
   isFavorite: (catId: string) => boolean;

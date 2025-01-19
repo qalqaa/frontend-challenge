@@ -23,7 +23,7 @@ export const useCatStore = create<CatStore>((set, get) => ({
     }
   },
 
-  getCatsByBreed: async (breed) => {
+  fetchCatsByBreed: async (breed) => {
     const { currentPage, picturesPerPage, cats } = get();
     try {
       set({ loading: true, error: null });
@@ -39,6 +39,14 @@ export const useCatStore = create<CatStore>((set, get) => ({
     } catch (error: any) {
       set({ error, loading: false });
     }
+  },
+
+  resetCats: () => {
+    set({
+      cats: [],
+      currentPage: 1,
+      hasMore: true,
+    });
   },
 
   addToFavorites: (cat) => {

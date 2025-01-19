@@ -3,8 +3,14 @@
   overflow: hidden;
   aspect-ratio: 1/1;
   border-radius: 2rem;
+  transition: all 0.3s ease-in-out;
+  cursor: pointer;
+  &:hover {
+    transform: scale(1.03);
+    z-index: 4;
+  }
+
   &::after {
-    transition: all 0.3s ease-in-out;
     content: "";
     width: calc(100% + 2px);
     height: calc(100% + 2px);

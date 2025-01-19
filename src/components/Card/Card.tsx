@@ -1,9 +1,9 @@
 import { BreedCard } from '../../model/breedCard';
 import styles from './Card.module.scss';
 
-const Card = ({ breed }: BreedCard) => {
+const Card = ({ breed, onCLick }: BreedCard) => {
   return (
-    <li className={styles.card}>
+    <li onClick={onCLick} className={styles.card}>
       <h3 className={styles.title}>{breed.name}</h3>
       <img
         className={styles.img}

@@ -23,7 +23,7 @@ export const getCatsByBreed = async (
   picturesPerPage: number,
   pageNumber: number,
 ): Promise<Cat[]> => {
-  const url = `${api}/images?limit=${picturesPerPage}&page=${pageNumber}&breed_ids=${breed}&api_key=${
+  const url = `${api}/images/search?limit=${picturesPerPage}&page=${pageNumber}&breed_ids=${breed}&api_key=${
     import.meta.env.VITE_API_KEY
   }`;
   try {
