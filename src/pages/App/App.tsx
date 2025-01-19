@@ -1,9 +1,10 @@
+import { getCatsData } from '../../data/api';
 import styles from './App.module.scss';
 
 function App() {
   return (
     <main className={styles.container}>
-      <h1>qalqa's Kitty Pinterest</h1>
+      <button onClick={() => getCatsData()}>Get kittens</button>
     </main>
   );
 }
