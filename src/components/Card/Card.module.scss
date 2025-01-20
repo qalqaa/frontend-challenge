@@ -3,8 +3,9 @@
   overflow: hidden;
   aspect-ratio: 1/1;
   border-radius: 2rem;
-  transition: all 0.3s ease-in-out;
+  transition: 0.3s ease-in-out;
   cursor: pointer;
+  animation: fade 0.3s ease-in-out forwards;
   &:hover {
     transform: scale(1.03);
     z-index: 4;
@@ -53,5 +54,14 @@
     &::after {
       backdrop-filter: brightness(0.5) blur(2px);
     }
+  }
+}
+
+@keyframes fade {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
   }
 }

@@ -26,7 +26,9 @@
   line-height: 1.5;
   font-weight: 400;
   font-size: 62.5%;
-  transition: all 0.3s ease-in-out;
+  transition:
+    background 0.3s ease-in-out,
+    color 0.3s ease-in-out;
 
   color: var(--color-text);
   background-color: var(--color-bg);

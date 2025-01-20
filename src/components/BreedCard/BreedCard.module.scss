@@ -2,8 +2,9 @@
   position: relative;
   aspect-ratio: 1/1;
   border-radius: 2rem;
-  transition: all 0.3s ease-in-out;
+  transition: 0.3s ease-in-out;
   cursor: pointer;
+  animation: fade 0.3s ease-in-out forwards;
   &::after {
     content: "";
     width: calc(100% + 2px);
@@ -31,5 +32,14 @@
     object-fit: cover;
     user-select: none;
     border-radius: 2rem;
+  }
+}
+
+@keyframes fade {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
   }
 }
