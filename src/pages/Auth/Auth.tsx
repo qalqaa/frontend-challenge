@@ -8,6 +8,7 @@ const Auth = () => {
   const { isNeedToAuth, setApiKey } = useCatStore();
 
   const [inputKey, setInputKey] = useState<string>('');
+  const [error, setError] = useState<string>('');
   const navigate = useNavigate();
 
   const handleInput = (event: React.FormEvent<HTMLInputElement>) => {
@@ -15,6 +16,11 @@ const Auth = () => {
   };
 
   const handleAuth = () => {
+    if (inputKey === '') {
+      setError('Вы не ввели ключ!');
+      return;
+    }
+    console.log(inputKey);
     setApiKey(inputKey);
     navigate(ROUTES.HOME);
   };
@@ -43,6 +49,7 @@ const Auth = () => {
                 id="apiKey"
                 type="text"
               />
+              {error && <p className={styles.error}>{error}</p>}
             </div>
             <button onClick={() => handleAuth()} className={styles.button}>
               Подтвердить ключ
