@@ -1,6 +1,6 @@
+import { getCatsBreeds, getCatsByBreed } from '@/data/api';
+import { CatStore } from '@/model/catStore';
 import { create } from 'zustand';
-import { getCatsBreeds, getCatsByBreed } from '../data/api';
-import { CatStore } from '../model/catStore';
 
 const FAVORITES_STORAGE_KEY = 'cat_favorites';
 const API_KEY_STORAGE_KEY = 'cat_api_key';

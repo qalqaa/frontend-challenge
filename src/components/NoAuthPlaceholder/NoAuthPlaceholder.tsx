@@ -1,5 +1,5 @@
+import { ROUTES } from '@/utils/routes';
 import { Link } from 'react-router-dom';
-import { ROUTES } from '../../utils/routes';
 import styles from './NoAuthPlaceholder.module.scss';
 
 const NoAuthPlaceholder = () => {

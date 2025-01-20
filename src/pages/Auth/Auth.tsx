@@ -1,7 +1,7 @@
+import { useCatStore } from '@/stores/catStore';
+import { ROUTES } from '@/utils/routes';
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { useCatStore } from '../../stores/catStore';
-import { ROUTES } from '../../utils/routes';
 import styles from './Auth.module.scss';
 
 const Auth = () => {

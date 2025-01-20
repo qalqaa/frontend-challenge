@@ -1,4 +1,4 @@
-import { Cat, IBreed } from '../model/breed';
+import { Cat, IBreed } from '@/model/breed';
 
 const api = 'https://api.thecatapi.com/v1';
 

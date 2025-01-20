@@ -1,10 +1,10 @@
+import { IBreed } from '@/model/breed';
+import NotFound from '@/pages/NotFound/NotFound';
+import { useCatStore } from '@/stores/catStore';
+import BreedCard from 'components/BreedCard/BreedCard';
+import Skeleton from 'components/Skeleton/Skeleton';
 import { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
-import BreedCard from '../../components/BreedCard/BreedCard';
-import Skeleton from '../../components/Skeleton/Skeleton';
-import { IBreed } from '../../model/breed';
-import { useCatStore } from '../../stores/catStore';
-import NotFound from '../NotFound/NotFound';
 import styles from './Breed.module.scss';
 
 const Breed = () => {

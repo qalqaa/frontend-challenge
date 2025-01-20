@@ -1,10 +1,10 @@
+import { useCatStore } from '@/stores/catStore';
+import Card from 'components/Card/Card';
+import NoAuthPlaceholder from 'components/NoAuthPlaceholder/NoAuthPlaceholder';
+import Skeleton from 'components/Skeleton/Skeleton';
 import { debounce } from 'lodash';
 import { useCallback, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import Card from '../../components/Card/Card';
-import NoAuthPlaceholder from '../../components/NoAuthPlaceholder/NoAuthPlaceholder';
-import Skeleton from '../../components/Skeleton/Skeleton';
-import { useCatStore } from '../../stores/catStore';
 import styles from './App.module.scss';
 
 function App() {

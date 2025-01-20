@@ -1,8 +1,8 @@
+import { useCatStore } from '@/stores/catStore';
+import { ROUTES } from '@/utils/routes';
 import clsx from 'clsx';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { useCatStore } from '../../stores/catStore';
-import { ROUTES } from '../../utils/routes';
 import styles from './Header.module.scss';
 
 const Header = () => {

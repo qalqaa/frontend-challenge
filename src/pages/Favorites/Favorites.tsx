@@ -1,6 +1,6 @@
-import BreedCard from '../../components/BreedCard/BreedCard';
-import NoAuthPlaceholder from '../../components/NoAuthPlaceholder/NoAuthPlaceholder';
-import { useCatStore } from '../../stores/catStore';
+import { useCatStore } from '@/stores/catStore';
+import BreedCard from 'components/BreedCard/BreedCard';
+import NoAuthPlaceholder from 'components/NoAuthPlaceholder/NoAuthPlaceholder';
 import styles from './Favorites.module.scss';
 
 const Favorites = () => {

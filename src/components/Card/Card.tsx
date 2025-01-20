@@ -1,4 +1,4 @@
-import { BreedCard } from '../../model/breedCard';
+import { BreedCard } from '@/model/breedCard';
 import styles from './Card.module.scss';
 
 const Card = ({ breed, onCLick }: BreedCard) => {

@@ -1,7 +1,7 @@
+import { Cat } from '@/model/breed';
+import { useCatStore } from '@/stores/catStore';
 import clsx from 'clsx';
-import { Cat } from '../../model/breed';
-import { useCatStore } from '../../stores/catStore';
-import LikeButton from '../LikeButton/LikeButton';
+import LikeButton from 'components/LikeButton/LikeButton';
 import styles from './BreedCard.module.scss';
 interface IBreedCardProps {
   cat: Cat;
