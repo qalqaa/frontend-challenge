@@ -1,14 +1,21 @@
 //Если что я люблю и уважаю tailwind, но тут решил пофлексить CSS модулями, так что пускай без него
 
+$header-padding: 1rem;
+$header-border-radius: 1rem;
+$header-bg-color: var(--color-accent-transparent-semi);
+$link-color: var(--color-text-header);
+$link-hover-bg: var(--color-accent-highlight);
+$transition-time: 0.3s ease;
+
 .header {
   box-sizing: border-box;
-  margin: 1rem;
+  margin: $header-padding;
   position: fixed;
-  width: calc(100% - 2rem);
+  width: calc(100% - 2 * $header-padding);
   top: 0;
-  border-radius: 1rem;
+  border-radius: $header-border-radius;
   padding: 1em 2rem;
-  background-color: var(--color-accent-transparent-semi);
+  background-color: $header-bg-color;
   z-index: 1000;
 
   &::after {
@@ -19,7 +26,7 @@
     width: 100%;
     height: 100%;
     z-index: -1;
-    border-radius: 1rem;
+    border-radius: $header-border-radius;
     backdrop-filter: blur(10px);
   }
 
@@ -32,22 +39,28 @@
   }
 
   .logo {
-    color: var(--color-text-header);
+    color: $link-color;
     font-weight: 500;
     font-size: clamp(2rem, 5vw, 3rem);
     padding: 1.4rem 2rem;
-    border-radius: 1rem;
+    border-radius: $header-border-radius;
     transition:
-      color 0.3s ease,
-      background-color 0.3s ease;
+      color $transition-time,
+      background-color $transition-time;
 
     &:hover {
-      background-color: var(--color-accent-highlight);
+      background-color: $link-hover-bg;
     }
   }
 
   .nav {
     position: relative;
+
+    @media (max-width: 768px) {
+      padding: 2rem;
+      background-color: var(--color-bg-comp-transparent);
+      border-radius: $header-border-radius;
+    }
   }
 
   .burger {
@@ -64,14 +77,13 @@
     span {
       display: block;
       height: 0.3rem;
-      border-radius: 1rem;
       width: 100%;
-      background-color: var(--color-text-header);
+      background-color: $link-color;
       border-radius: 0.2rem;
       transition:
-        transform 0.3s ease,
-        background-color 0.3s ease,
-        opacity 0.3s ease;
+        transform $transition-time,
+        background-color $transition-time,
+        opacity $transition-time;
 
       &:nth-child(1) {
         transform-origin: top left;
@@ -81,16 +93,22 @@
       }
     }
 
-    &.active span {
-      &:nth-child(1) {
-        transform: rotate(45deg) translate(0.5rem, -0.5rem);
+    &.active {
+      span {
+        &:nth-child(1) {
+          transform: rotate(45deg) translate(0.5rem, -0.5rem);
+        }
+        &:nth-child(2) {
+          opacity: 0;
+        }
+        &:nth-child(3) {
+          transform: rotate(-45deg) translate(0.5rem, 0.4rem);
+        }
       }
-      &:nth-child(2) {
-        opacity: 0;
-      }
-      &:nth-child(3) {
-        transform: rotate(-45deg) translate(0.5rem, 0.4rem);
-      }
+    }
+
+    @media (max-width: 768px) {
+      display: flex;
     }
   }
 
@@ -104,14 +122,12 @@
       top: 8.3rem;
       right: -2rem;
       flex-direction: column;
-      background-color: var(--color-accent-transparent-semi);
+      background-color: $header-bg-color;
       border-radius: 0.8rem;
-      width: max-content;
-      z-index: 1000;
       padding: 0;
       opacity: 0;
       width: 0%;
-      transition: all 0.3s ease;
+      transition: all $transition-time;
 
       &::after {
         content: "";
@@ -121,27 +137,29 @@
         width: 100%;
         height: 100%;
         z-index: -1;
-        border-radius: 1rem;
+        border-radius: $header-border-radius;
         backdrop-filter: blur(10px);
       }
 
       .item {
         .link {
-          transition: 0.3s ease-in-out;
+          transition: $transition-time;
           font-size: 0rem;
           opacity: 0;
         }
       }
 
       &.listOpen {
-        width: calc(100vw - 2rem);
+        width: calc(100vw - 2 * $header-padding);
         box-sizing: border-box;
         display: flex;
-        padding: 1rem;
+        padding: $header-padding;
         opacity: 1;
+
         .item {
           display: flex;
           width: 100%;
+
           .link {
             width: 100%;
             opacity: 1;
@@ -155,26 +173,15 @@
 
   .item {
     .link {
-      color: var(--color-text-header);
-      border-radius: 1rem;
+      color: $link-color;
+      border-radius: $header-border-radius;
       font-size: 1.8rem;
-      padding: 1rem 2rem;
-      transition: background-color 0.3s ease;
+      padding: $header-padding 2rem;
+      transition: background-color $transition-time;
 
       &:hover {
-        background-color: var(--color-accent-highlight);
+        background-color: $link-hover-bg;
       }
-    }
-  }
-
-  @media (max-width: 768px) {
-    .nav {
-      padding: 2rem;
-      background-color: var(--color-bg-comp-transparent);
-      border-radius: 1rem;
-    }
-    .burger {
-      display: flex;
     }
   }
 }
