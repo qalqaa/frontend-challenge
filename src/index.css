@@ -8,6 +8,7 @@
 
   --color-bg: #f0f0f0;
   --color-bg-comp: #ffffff;
+  --color-bg-comp-transparent: rgba(255, 255, 255, 0.5);
 
   --color-text: #333333;
   --color-text-soft: #666666;
@@ -77,6 +78,7 @@ body {
 
     --color-bg: #181818;
     --color-bg-comp: #303030;
+    --color-bg-comp-transparent: rgba(48, 48, 48, 0.5);
 
     --color-text: #ffffff;
     --color-text-soft: #b1b1b1;

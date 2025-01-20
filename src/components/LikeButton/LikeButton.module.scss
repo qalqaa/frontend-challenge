@@ -1,0 +1,81 @@
+.button-base {
+  background-color: var(--color-bg-comp-transparent);
+  backdrop-filter: blur(5px);
+  padding: 2rem;
+  border-radius: 2rem;
+}
+
+.heart-container {
+  --heart-color: rgb(255, 91, 137);
+  position: relative;
+  width: 5em;
+  height: 5rem;
+  transition: 0.3s;
+
+  .svg-container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .svg-outline,
+  .svg-filled {
+    fill: var(--heart-color);
+    position: absolute;
+  }
+
+  .svg-filled {
+    opacity: 0;
+    transition: 0.2s;
+    &.svg-like {
+      opacity: 1;
+      animation: keyframes-svg-filled 1s;
+    }
+  }
+
+  .svg-celebrate {
+    position: absolute;
+    opacity: 0;
+    stroke: var(--heart-color);
+    fill: var(--heart-color);
+    transition: 0.2s;
+    &.svg-like {
+      animation: keyframes-svg-celebrate 0.5s;
+      animation-fill-mode: forwards;
+    }
+  }
+}
+
+@keyframes keyframes-svg-filled {
+  0% {
+    transform: scale(0);
+  }
+
+  25% {
+    transform: scale(1.2);
+  }
+
+  50% {
+    transform: scale(1);
+    filter: brightness(1.5);
+  }
+}
+
+@keyframes keyframes-svg-celebrate {
+  0% {
+    transform: scale(0);
+  }
+
+  50% {
+    opacity: 1;
+    filter: brightness(1.5);
+  }
+
+  100% {
+    transform: scale(1.4);
+    opacity: 0;
+    display: none;
+  }
+}

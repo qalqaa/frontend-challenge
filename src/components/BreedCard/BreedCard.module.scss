@@ -1,13 +1,28 @@
 .card {
   position: relative;
-  overflow: hidden;
   aspect-ratio: 1/1;
   border-radius: 2rem;
   transition: all 0.3s ease-in-out;
   cursor: pointer;
+  &::after {
+    content: "";
+    width: calc(100% + 2px);
+    height: calc(100% + 2px);
+    position: absolute;
+    border-radius: 2rem;
+    top: 0;
+    left: 0;
+    z-index: 999;
+  }
   &:hover {
     transform: scale(1.03);
     z-index: 4;
+  }
+
+  .like {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
   }
 
   .img {
@@ -15,16 +30,6 @@
     height: 100%;
     object-fit: cover;
     user-select: none;
-  }
-}
-
-@media (prefers-color-scheme: dark) {
-  .card {
-    .title {
-      text-shadow: 0 0 0 rgb(0, 0, 0, 0);
-    }
-    &::after {
-      backdrop-filter: brightness(0.5) blur(2px);
-    }
+    border-radius: 2rem;
   }
 }
