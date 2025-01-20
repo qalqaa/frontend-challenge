@@ -2,8 +2,12 @@ import { Cat, IBreed } from '../model/breed';
 
 const api = 'https://api.thecatapi.com/v1';
 
-export const getCatsBreeds = async (apiKey: string): Promise<IBreed[]> => {
-  const url = `${api}/breeds`;
+export const getCatsBreeds = async (
+  apiKey: string,
+  page: number,
+  limit: number,
+): Promise<IBreed[]> => {
+  const url = `${api}/breeds?limit=${limit}&page=${page}`;
   try {
     const response = await fetch(url, {
       headers: { 'x-api-key': apiKey },
@@ -21,12 +25,9 @@ export const getCatsBreeds = async (apiKey: string): Promise<IBreed[]> => {
 export const getCatsByBreed = async (
   breed: string,
   picturesPerPage: number,
-  pageNumber: number,
   userApiKey: string,
 ): Promise<Cat[]> => {
-  const url = `${api}/images/search?limit=${picturesPerPage}&page=${pageNumber}&breed_ids=${breed}&api_key=${
-    import.meta.env.VITE_API_KEY
-  }`;
+  const url = `${api}/images/search?limit=${picturesPerPage}&breed_ids=${breed}&api_key=${userApiKey}`;
   try {
     const response = await fetch(url, {
       headers: { 'x-api-key': userApiKey },

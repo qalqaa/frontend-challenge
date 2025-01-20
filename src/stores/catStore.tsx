@@ -13,7 +13,7 @@ export const useCatStore = create<CatStore>((set, get) => ({
   isLoadingBreed: false,
   hasMore: true,
   error: null,
-  currentPage: 1,
+  currentPage: 0,
   picturesPerPage: 10,
   userApiKey:
     import.meta.env.VITE_API_KEY ||
@@ -22,38 +22,41 @@ export const useCatStore = create<CatStore>((set, get) => ({
   isNeedToAuth: false,
 
   fetchBreeds: async () => {
-    const { userApiKey } = get();
+    const { userApiKey, picturesPerPage, currentPage, breeds, hasMore } = get();
     if (!userApiKey) {
       set({ isNeedToAuth: true });
       return;
     }
     try {
-      set({ isLoadingMain: true, error: null });
-      const breeds = await getCatsBreeds(userApiKey);
-      set({ breeds: breeds || [], isLoadingMain: false });
+      if (hasMore) {
+        set({ isLoadingMain: true, error: null });
+        const newBreeds = await getCatsBreeds(
+          userApiKey,
+          currentPage,
+          picturesPerPage,
+        );
+
+        set({ currentPage: currentPage + 1 });
+        set({
+          breeds: [...breeds, ...newBreeds],
+          currentPage: currentPage + 1,
+          isLoadingMain: false,
+        });
+        if (newBreeds.length < picturesPerPage) {
+          set({ hasMore: false, isLoadingMain: false });
+        }
+      }
     } catch (error: any) {
       set({ error, isLoadingMain: false });
     }
   },
 
   fetchCatsByBreed: async (breed) => {
-    const { currentPage, picturesPerPage, cats, userApiKey } = get();
+    const { picturesPerPage, userApiKey } = get();
     try {
       set({ isLoadingBreed: true, error: null });
-      const newCats = await getCatsByBreed(
-        breed,
-        picturesPerPage,
-        currentPage,
-        userApiKey,
-      );
-      if (newCats.length < picturesPerPage) {
-        set({ hasMore: false });
-      }
-      set({
-        cats: [...cats, ...newCats],
-        currentPage: currentPage + 1,
-        isLoadingBreed: false,
-      });
+      const cats = await getCatsByBreed(breed, picturesPerPage, userApiKey);
+      set({ cats: cats || [], isLoadingBreed: false });
     } catch (error: any) {
       set({ error, isLoadingBreed: false });
     }
