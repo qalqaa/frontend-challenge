@@ -3,6 +3,7 @@ import { createRoot } from 'react-dom/client';
 import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
 import Footer from './components/Footer/Footer.tsx';
 import Header from './components/Header/Header.tsx';
+import ScrollToTop from './components/ScrollOnTop/ScrollOnTop.tsx';
 import './index.css';
 import App from './pages/App/App.tsx';
 import Breed from './pages/Breed/Breed.tsx';
@@ -13,6 +14,7 @@ import { ROUTES } from './utils/routes.ts';
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <Router>
+      <ScrollToTop />
       <Header />
       <Routes>
         <Route path={`${ROUTES.HOME}`} element={<App />}></Route>
