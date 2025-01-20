@@ -8,7 +8,7 @@
   min-height: 92.3vh;
 
   .title {
-    font-size: 5rem;
+    font-size: clamp(3rem, 5vw, 5.2rem);
     margin: 0;
   }
 
