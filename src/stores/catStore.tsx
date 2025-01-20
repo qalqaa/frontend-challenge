@@ -65,8 +65,6 @@ export const useCatStore = create<CatStore>((set, get) => ({
   resetCats: () => {
     set({
       cats: [],
-      currentPage: 1,
-      hasMore: true,
     });
   },
 
