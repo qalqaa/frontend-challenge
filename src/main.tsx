@@ -14,7 +14,7 @@ import { ROUTES } from './utils/routes.ts';
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <Router>
+    <Router basename="/frontend-challenge/">
       <ScrollToTop />
       <Header />
       <Routes>

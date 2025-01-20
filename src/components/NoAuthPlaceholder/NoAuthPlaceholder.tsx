@@ -5,7 +5,7 @@ import styles from './NoAuthPlaceholder.module.scss';
 const NoAuthPlaceholder = () => {
   return (
     <div className={styles.auth}>
-      <img src="../cat-denied.svg" alt="Котик печатает" />
+      <img src="cat-denied.svg" alt="Котик печатает" />
       <h3 className={styles['auth-title']}>
         Пожалуйста, авторизуйтесь, чтобы посмотреть котиков
       </h3>
