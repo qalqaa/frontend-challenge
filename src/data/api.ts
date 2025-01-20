@@ -2,11 +2,11 @@ import { Cat, IBreed } from '../model/breed';
 
 const api = 'https://api.thecatapi.com/v1';
 
-export const getCatsBreeds = async (): Promise<IBreed[]> => {
+export const getCatsBreeds = async (apiKey: string): Promise<IBreed[]> => {
   const url = `${api}/breeds`;
   try {
     const response = await fetch(url, {
-      headers: { 'x-api-key': import.meta.env.VITE_API_KEY },
+      headers: { 'x-api-key': apiKey },
     });
     if (!response.ok) {
       throw new Error('Something went wrong');

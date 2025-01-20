@@ -18,4 +18,5 @@ export interface CatStore {
   addToFavorites: (cat: Cat) => void;
   removeFromFavorites: (catId: string) => void;
   isFavorite: (catId: string) => boolean;
+  setApiKey: (apiKey: string) => void;
 }

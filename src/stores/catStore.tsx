@@ -3,6 +3,7 @@ import { getCatsBreeds, getCatsByBreed } from '../data/api';
 import { CatStore } from '../model/catStore';
 
 const FAVORITES_STORAGE_KEY = 'cat_favorites';
+const API_KEY_STORAGE_KEY = 'cat_api_key';
 
 export const useCatStore = create<CatStore>((set, get) => ({
   breeds: [],
@@ -14,13 +15,21 @@ export const useCatStore = create<CatStore>((set, get) => ({
   error: null,
   currentPage: 1,
   picturesPerPage: 10,
-  userApiKey: import.meta.env.VITE_API_KEY || '',
+  userApiKey:
+    import.meta.env.VITE_API_KEY ||
+    localStorage.getItem(API_KEY_STORAGE_KEY) ||
+    '',
   isNeedToAuth: false,
 
   fetchBreeds: async () => {
+    const { userApiKey } = get();
+    if (!userApiKey) {
+      set({ isNeedToAuth: true });
+      return;
+    }
     try {
       set({ isLoadingMain: true, error: null });
-      const breeds = await getCatsBreeds();
+      const breeds = await getCatsBreeds(userApiKey);
       set({ breeds: breeds || [], isLoadingMain: false });
     } catch (error: any) {
       set({ error, isLoadingMain: false });
@@ -30,10 +39,6 @@ export const useCatStore = create<CatStore>((set, get) => ({
   fetchCatsByBreed: async (breed) => {
     const { currentPage, picturesPerPage, cats, userApiKey } = get();
     try {
-      if (!userApiKey) {
-        set({ isNeedToAuth: true });
-        return;
-      }
       set({ isLoadingBreed: true, error: null });
       const newCats = await getCatsByBreed(
         breed,
@@ -91,5 +96,7 @@ export const useCatStore = create<CatStore>((set, get) => ({
 
   setApiKey: (apiKey: string) => {
     set({ userApiKey: apiKey });
+    set({ isNeedToAuth: false });
+    localStorage.setItem(API_KEY_STORAGE_KEY, apiKey);
   },
 }));
