@@ -2,31 +2,34 @@ import { create } from 'zustand';
 import { getCatsBreeds, getCatsByBreed } from '../data/api';
 import { CatStore } from '../model/catStore';
 
+const FAVORITES_STORAGE_KEY = 'cat_favorites';
+
 export const useCatStore = create<CatStore>((set, get) => ({
   breeds: [],
   cats: [],
-  favorites: [],
-  isLoading: false,
+  favorites: JSON.parse(localStorage.getItem(FAVORITES_STORAGE_KEY) || '[]'),
+  isLoadingMain: false,
+  isLoadingBreed: false,
+  isLoadingFavorites: false,
   hasMore: true,
-  loading: false,
   error: null,
   currentPage: 1,
   picturesPerPage: 10,
 
   fetchBreeds: async () => {
     try {
-      set({ isLoading: true, error: null });
+      set({ isLoadingMain: true, error: null });
       const breeds = await getCatsBreeds();
-      set({ breeds: breeds || [], isLoading: false });
+      set({ breeds: breeds || [], isLoadingMain: false });
     } catch (error: any) {
-      set({ error, isLoading: false });
+      set({ error, isLoadingMain: false });
     }
   },
 
   fetchCatsByBreed: async (breed) => {
     const { currentPage, picturesPerPage, cats } = get();
     try {
-      set({ loading: true, error: null });
+      set({ isLoadingBreed: true, error: null });
       const newCats = await getCatsByBreed(breed, picturesPerPage, currentPage);
       if (newCats.length < picturesPerPage) {
         set({ hasMore: false });
@@ -34,10 +37,10 @@ export const useCatStore = create<CatStore>((set, get) => ({
       set({
         cats: [...cats, ...newCats],
         currentPage: currentPage + 1,
-        loading: false,
+        isLoadingBreed: false,
       });
     } catch (error: any) {
-      set({ error, loading: false });
+      set({ error, isLoadingBreed: false });
     }
   },
 
@@ -52,15 +55,25 @@ export const useCatStore = create<CatStore>((set, get) => ({
   addToFavorites: (cat) => {
     const { favorites } = get();
     if (!favorites.find((favorite) => favorite.id === cat.id)) {
-      set({ favorites: [...favorites, cat] });
+      const updatedFavorites = [...favorites, cat];
+      set({ favorites: updatedFavorites });
+      localStorage.setItem(
+        FAVORITES_STORAGE_KEY,
+        JSON.stringify(updatedFavorites),
+      );
     }
   },
 
   removeFromFavorites: (catId) => {
     const { favorites } = get();
-    set({
-      favorites: favorites.filter((favorite) => favorite.id !== catId),
-    });
+    const updatedFavorites = favorites.filter(
+      (favorite) => favorite.id !== catId,
+    );
+    set({ favorites: updatedFavorites });
+    localStorage.setItem(
+      FAVORITES_STORAGE_KEY,
+      JSON.stringify(updatedFavorites),
+    );
   },
 
   isFavorite: (catId) =>

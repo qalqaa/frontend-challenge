@@ -12,7 +12,7 @@ const Breed = () => {
   const state = location.state as { breed: IBreed };
   if (!state) return <NotFound />;
 
-  const { cats, resetCats, fetchCatsByBreed, loading } = useCatStore();
+  const { cats, resetCats, fetchCatsByBreed, isLoadingBreed } = useCatStore();
   useEffect(() => {
     const fetchData = async () => {
       resetCats();
@@ -27,7 +27,7 @@ const Breed = () => {
     <>
       <div className={styles.container}>
         <h2>Коты породы {state?.breed.name} </h2>
-        {loading && <Loader />}
+        {isLoadingBreed && <Loader />}
         <ul className={styles.list}>
           {cats.map((cat) => (
             <BreedCard key={cat.id} cat={cat} />

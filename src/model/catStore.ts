@@ -4,9 +4,10 @@ export interface CatStore {
   breeds: IBreed[];
   cats: Cat[];
   favorites: Cat[];
-  isLoading: boolean;
+  isLoadingMain: boolean;
+  isLoadingBreed: boolean;
+  isLoadingFavorites: boolean;
   hasMore: boolean;
-  loading: boolean;
   error: Error | null;
   currentPage: number;
   picturesPerPage: number;

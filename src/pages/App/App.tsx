@@ -5,8 +5,8 @@ import { useCatStore } from '../../stores/catStore';
 import styles from './App.module.scss';
 
 function App() {
-  const { breeds, fetchBreeds, isLoading } = useCatStore();
-  if (breeds.length === 0 && !isLoading) fetchBreeds();
+  const { breeds, fetchBreeds, isLoadingMain } = useCatStore();
+  if (breeds.length === 0 && !isLoadingMain) fetchBreeds();
 
   const navigate = useNavigate();
   return (
@@ -14,7 +14,7 @@ function App() {
       <h2>Все породы котиков</h2>
 
       <ul className={styles.list}>
-        {isLoading
+        {isLoadingMain
           ? Array.from({ length: 66 }).map((_, index) => (
               <Skeleton key={index} />
             ))

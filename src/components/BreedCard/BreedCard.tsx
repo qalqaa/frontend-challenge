@@ -13,10 +13,8 @@ const BreedCard = ({ cat }: IBreedCardProps) => {
   const favoriteHandle = () => {
     if (!isFavorite(cat.id)) {
       addToFavorites(cat);
-      console.log('added', cat);
     } else {
       removeFromFavorites(cat.id);
-      console.log('removed', cat);
     }
   };
   return (
