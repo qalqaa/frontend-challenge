@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 import Card from '../../components/Card/Card';
-import Loader from '../../components/Loader/Loader';
+import Skeleton from '../../components/Skeleton/Skeleton';
 import { useCatStore } from '../../stores/catStore';
 import styles from './App.module.scss';
 
@@ -12,23 +12,24 @@ function App() {
   return (
     <main className={styles.container}>
       <h2>Все породы котиков</h2>
-      {isLoading ? (
-        <Loader />
-      ) : (
-        <ul className={styles.list}>
-          {breeds.map((breed) => (
-            <Card
-              key={breed.id}
-              breed={breed}
-              onCLick={() => {
-                navigate(`/breed/${breed.id}`, {
-                  state: { breed },
-                });
-              }}
-            />
-          ))}
-        </ul>
-      )}
+
+      <ul className={styles.list}>
+        {isLoading
+          ? Array.from({ length: 66 }).map((_, index) => (
+              <Skeleton key={index} />
+            ))
+          : breeds.map((breed) => (
+              <Card
+                key={breed.id}
+                breed={breed}
+                onCLick={() => {
+                  navigate(`/breed/${breed.id}`, {
+                    state: { breed },
+                  });
+                }}
+              />
+            ))}
+      </ul>
     </main>
   );
 }

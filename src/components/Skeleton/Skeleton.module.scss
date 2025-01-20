@@ -1,0 +1,25 @@
+.skeleton {
+  border-radius: 2rem;
+  position: relative;
+  aspect-ratio: 1/1;
+}
+
+.loader {
+  background-image: linear-gradient(
+    90deg,
+    var(--color-bg-comp) 0px,
+    var(--color-border) 100px,
+    var(--color-bg-comp) 200px
+  );
+  background-size: 200%;
+  background-position: 100% 0;
+  border-radius: inherit;
+  animation: shimmer 1.5s infinite;
+  height: 100%;
+}
+
+@keyframes shimmer {
+  to {
+    background-position: -100% 0;
+  }
+}
