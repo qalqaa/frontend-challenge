@@ -14,6 +14,8 @@ export const useCatStore = create<CatStore>((set, get) => ({
   error: null,
   currentPage: 1,
   picturesPerPage: 10,
+  userApiKey: import.meta.env.VITE_API_KEY || '',
+  isNeedToAuth: false,
 
   fetchBreeds: async () => {
     try {
@@ -26,10 +28,19 @@ export const useCatStore = create<CatStore>((set, get) => ({
   },
 
   fetchCatsByBreed: async (breed) => {
-    const { currentPage, picturesPerPage, cats } = get();
+    const { currentPage, picturesPerPage, cats, userApiKey } = get();
     try {
+      if (!userApiKey) {
+        set({ isNeedToAuth: true });
+        return;
+      }
       set({ isLoadingBreed: true, error: null });
-      const newCats = await getCatsByBreed(breed, picturesPerPage, currentPage);
+      const newCats = await getCatsByBreed(
+        breed,
+        picturesPerPage,
+        currentPage,
+        userApiKey,
+      );
       if (newCats.length < picturesPerPage) {
         set({ hasMore: false });
       }
@@ -77,4 +88,8 @@ export const useCatStore = create<CatStore>((set, get) => ({
 
   isFavorite: (catId) =>
     get().favorites.some((favorite) => favorite.id === catId),
+
+  setApiKey: (apiKey: string) => {
+    set({ userApiKey: apiKey });
+  },
 }));

@@ -10,6 +10,8 @@ export interface CatStore {
   error: Error | null;
   currentPage: number;
   picturesPerPage: number;
+  userApiKey: string;
+  isNeedToAuth: boolean;
   fetchBreeds: () => Promise<void>;
   fetchCatsByBreed: (breed: string) => void;
   resetCats: () => void;
