@@ -34,7 +34,7 @@
   .logo {
     color: var(--color-text-header);
     font-weight: 500;
-    font-size: 3rem;
+    font-size: clamp(2rem, 5vw, 3rem);
     padding: 1.4rem 2rem;
     border-radius: 1rem;
     transition:
@@ -134,7 +134,7 @@
       }
 
       &.listOpen {
-        width: calc(100vw - 3.5rem);
+        width: calc(100vw - 2rem);
         box-sizing: border-box;
         display: flex;
         padding: 1rem;

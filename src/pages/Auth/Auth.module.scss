@@ -1,7 +1,8 @@
 .container {
   max-width: var(--container-size-desktop);
-  margin: 10.3rem auto 0;
-  min-height: 92.3vh;
+  margin: 11.2rem auto 0;
+  min-height: calc(100vh - 11.2rem);
+  padding: 0 1rem;
   display: flex;
   flex-direction: column;
   justify-content: center;

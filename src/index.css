@@ -64,8 +64,8 @@ ul {
 
 body {
   margin: 0;
-  min-height: 92.3vh;
-  /* overflow-y: hidden; */
+  min-height: 100%;
+  /* overflow-x: hidden; */
   position: relative;
 }
 

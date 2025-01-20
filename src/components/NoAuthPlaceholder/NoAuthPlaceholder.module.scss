@@ -3,14 +3,14 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  min-height: calc(87.3vh - 9.2rem);
+  min-height: calc(100vh - (11.2rem + 9.2rem));
   gap: 1rem;
   .auth-title {
     text-align: center;
     line-height: 1;
-    font-size: 3.6rem;
+    font-size: clamp(2rem, 5vw, 4rem);
+    max-width: clamp(20rem, 40vw, 40rem);
     margin: 0;
-    max-width: 40vw;
   }
   .auth-link {
     font-size: 2rem;
