@@ -6,6 +6,7 @@ import Header from './components/Header/Header.tsx';
 import './index.css';
 import App from './pages/App/App.tsx';
 import Breed from './pages/Breed/Breed.tsx';
+import Favorites from './pages/Favorites/Favorites.tsx';
 import NotFound from './pages/NotFound/NotFound.tsx';
 import { ROUTES } from './utils/routes.ts';
 
@@ -16,6 +17,7 @@ createRoot(document.getElementById('root')!).render(
       <Routes>
         <Route path={`${ROUTES.HOME}`} element={<App />}></Route>
         <Route path={`${ROUTES.BREED}`} element={<Breed />}></Route>
+        <Route path={`${ROUTES.FAVORITES}`} element={<Favorites />}></Route>
         <Route path={`${ROUTES.NOT_FOUND}`} element={<NotFound />}></Route>
       </Routes>
       <Footer />

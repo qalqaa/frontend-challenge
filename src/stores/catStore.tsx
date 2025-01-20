@@ -10,7 +10,6 @@ export const useCatStore = create<CatStore>((set, get) => ({
   favorites: JSON.parse(localStorage.getItem(FAVORITES_STORAGE_KEY) || '[]'),
   isLoadingMain: false,
   isLoadingBreed: false,
-  isLoadingFavorites: false,
   hasMore: true,
   error: null,
   currentPage: 1,

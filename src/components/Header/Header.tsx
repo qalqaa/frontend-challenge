@@ -16,7 +16,7 @@ const Header = () => {
             </Link>
           </li>
           <li className={styles.item}>
-            <Link className={styles.link} to={ROUTES.HOME}>
+            <Link className={styles.link} to={ROUTES.FAVORITES}>
               Любимые котики
             </Link>
           </li>

@@ -1,6 +1,6 @@
 export enum ROUTES {
   HOME = '/',
-  USER = '/favorites',
+  FAVORITES = '/favorites',
   BREED = '/breed/:id',
   NOT_FOUND = '*',
   AUTH = '/auth',

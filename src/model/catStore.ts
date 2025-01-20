@@ -6,7 +6,6 @@ export interface CatStore {
   favorites: Cat[];
   isLoadingMain: boolean;
   isLoadingBreed: boolean;
-  isLoadingFavorites: boolean;
   hasMore: boolean;
   error: Error | null;
   currentPage: number;
